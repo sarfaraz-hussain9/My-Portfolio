@@ -1,45 +1,68 @@
-import React, { useState } from 'react'
-import { FaBars} from "react-icons/fa";
-import { FaX } from "react-icons/fa6";
+import React, { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { FaAffiliatetheme } from "react-icons/fa6";
 
 const NavBar = () => {
-
-    const [isopen,setisopen]=useState(false);
-    const navLinks=[
-        { link:"HOME",hrf:"#hero" },
-        { link:"ABOUT",hrf:"#about" },
-        { link:"PROJECT",hrf:"#project" },
-    ];
+  const [isOpen, setIsOpen] = useState(false);
+  const navLinks = [
+    { link: "HOME", href: "#hero" },
+    { link: "ABOUT", href: "#about" },
+    { link: "PROJECT", href: "#project" },
+  ];
 
   return (
-    <>
-        <nav className='fixed top-0 left-0 w-full z-10'>
-            <div className=' bg-black px-4 lg:px-8 py-2 text-white flex justify-between flex-col lg:flex-row '>
-                {/* logo */}
-                <div className='text-2xl flex items-center gap-2 '>
-                    <FaAffiliatetheme/>
-                    <span className='font-semibold'>MY PORTFOLIO</span>
-                </div>
+    <nav className="w-full bg-gray-700 text-gray-100 shadow-md">
+      <div className="container mx-auto px-6 lg:px-12 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <div
+          className="text-3xl flex items-center gap-2 cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Go to homepage"
+        >
+          <FaAffiliatetheme />
+          <span className="font-semibold text-xl">MY PORTFOLIO</span>
+        </div>
 
-                {/* menu icon */}
-                <div onClick={()=>{setisopen(!isopen)}} className='cursor-pointer text-2xl absolute right-8 top-3 lg:hidden'>
-                    {isopen ? <FaX/> : <FaBars/>}
-                </div>
+        {/* Menu Icon */}
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className="lg:hidden text-3xl cursor-pointer"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </div>
 
-                {/* navlink */}
-                <ul  className={`flex flex-col items-center w-full h-[250px] lg:h-auto lg:w-auto py-10 gap-3  lg:py-3 lg:flex-row lg:gap-8 absolute lg:static left-0  z-[-10] lg:z-0 bg-black transition-all duration-500 ease-in font-semibold ${isopen ? 'top-11' : 'top-[-520px]'}`}>
-                {navLinks.map((e,i)=>(
-                    <li onClick={()=>setisopen(!isopen)} key={i}><a href={e.hrf}>{e.link}</a></li>
-                ))}
-               <a  onClick={()=>setisopen(!isopen)} href="#contact"> <button className='bg-blue-600 rounded px-8 py-1'>CONTACT</button></a>
-                </ul>
-               
-            </div>
-           
-        </nav>
-    </>
-  )
-}
+        {/* Nav Links */}
+        <ul
+          className={`lg:flex lg:items-center lg:gap-8 absolute lg:static top-16 left-0 w-full lg:w-auto bg-gray-700 lg:bg-transparent transition-transform duration-300 ease-in-out z-50 py-4 ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          {navLinks.map((e, i) => (
+            <li key={i} className="text-center lg:text-left ">
+              <a
+                href={e.href}
+                className="block py-2 px-4 text-lg lg:text-base font-semibold hover:bg-gray-600 rounded transition-colors duration-300"
+                onClick={() => setIsOpen(false)}
+              >
+                {e.link}
+              </a>
+            </li>
+          ))}
+          <li className="text-center lg:text-left mt-4 lg:mt-0">
+            <a href="#contact">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-bold transition-colors duration-300"
+              >
+                CONTACT
+              </button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
-export default NavBar
+export default NavBar;

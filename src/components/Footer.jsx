@@ -5,23 +5,50 @@ import { FaAffiliatetheme } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <>
-        <div className="w-full h-full text-white bg-black py-2 px-8 flex justify-between">
+    <footer className="w-full text-white bg-gray-700 py-4 px-8 flex justify-between items-center">
+      {/* Social Media Links */}
+      <div className="text-2xl flex gap-6">
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/sarfaraz-hussai9"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="hover:text-blue-500 transition-colors duration-300"
+        >
+          <FaLinkedin />
+        </a>
+        <a
+          target="_blank"
+          href="https://github.com/sarfaraz-hussain9"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          className="hover:text-gray-500 transition-colors duration-300"
+        >
+          <FaGithub />
+        </a>
+        <a
+          target="_blank"
+          href="https://instagram.com/sarfaraz_hussai9"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          className="hover:text-pink-500 transition-colors duration-300"
+        >
+          <FaInstagram />
+        </a>
+      </div>
 
-        <div className="text-2xl flex gap-4">
-        <a target="_blank" href="https://www.linkedin.com/in/sarfaraz-hussai9"><FaLinkedin/></a>
-        <a target="_blank" href="https://github.com/sarfaraz-hussain9"> <FaGithub /></a>
-        <a target="_blank" href="https://instagram.com/sarfaraz_hussai9"><FaInstagram/></a>
+      {/* Back to Top Logo */}
+      <div className="text-2xl">
+        <a
+          href="#hero"
+          aria-label="Back to Top"
+          className="hover:text-blue-500 transition-transform transform hover:scale-110 duration-300"
+        >
+          <FaAffiliatetheme />
+        </a>
+      </div>
+    </footer>
+  );
+};
 
-        </div>
-        
-        <div className="text-2xl">
-            <a href="#hero"><FaAffiliatetheme/></a>
-        </div>
-
-        </div>
-    </>
-  )
-}
-
-export default Footer
+export default Footer;
